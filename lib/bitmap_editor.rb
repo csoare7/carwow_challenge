@@ -18,13 +18,22 @@ class BitmapEditor
     @bitmap = Bitmap.new(args.first, args.last)
   end
 
-  def clear_image(args)
+  def colour_pixel(args)
+    if args.length != 3
+      puts "Wrong number of arguments when initializing bitmap" and return
+    elsif not args.take(2).all? { |arg| Integer(arg).is_a?(Integer) }
+      puts "Wrong argument type, please supply only integers" and return
+    elsif not ("A".."Z").include?(args.last)
+      puts "Wrong argument type, please supply only capital letters" and return
+    end
+    positions = args.take(2).map { |arg| arg.to_i }
+    @bitmap.set_pixel(positions, args.last)
+  end
+  
+  def clear_image()
     @bitmap.delete_pixels()
   end
 
-  def colour_pixel(args)
-     
-  end
 
   def draw_vertical(args)
 

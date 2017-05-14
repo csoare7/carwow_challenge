@@ -27,7 +27,7 @@ class Runner
     when "I"
       @bitmap_editor.create_image(args)
     when "C"
-      @bitmap_editor.clear_image(args)
+      @bitmap_editor.clear_image()
     when "L"
       @bitmap_editor.colour_pixel(args)
     when "V"
