@@ -45,7 +45,7 @@ class Runner
   end
 
   def parse_input(input)
-    input = input.split("")
+    input = input.split(" ")
     return input.shift(), input
   end
 

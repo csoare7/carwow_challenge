@@ -3,30 +3,39 @@ require_relative "../lib/bitmap"
 class BitmapEditor
 
   def initialize()
-    @bitmap = Bitmap.new()
   end
 
-  def create_image(*args)
-    puts *args
+  def create_image(args)
+    if args.length != 2
+      puts "Wrong number of arguments when initializing bitmap" and return
+    elsif not args.all? { |arg| Integer(arg).is_a?(Integer) }
+      puts "Wrong argument type, please supply only integers" and return
+    end
+    args = args.map { |arg| arg.to_i }
+    @bitmap = Bitmap.new(args.first, args.last)
   end
 
-  def clear_image(*args)
-    puts *args
+  def clear_image(args)
+    @bitmap.delete_pixels()
   end
 
-  def colour_pixel(*args)
-    puts *args   
+  def colour_pixel(args)
+     
   end
 
-  def draw_vertical(*args)
-    puts *args   
+  def draw_vertical(args)
+
   end
 
-  def draw_horizontal(*args)
-    puts *args   
+  def draw_horizontal(args)
+ 
   end
 
   def show_image()
-    puts "Image"
+    pixels = @bitmap.get_pixels()
+    pixels.each do |pixel_row|
+      puts pixel_row.each { |pixel| pixel }.join(" ")
+    end
   end
+
 end
