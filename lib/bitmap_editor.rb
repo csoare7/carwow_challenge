@@ -11,6 +11,8 @@ class BitmapEditor
       puts "Wrong number of arguments when initializing bitmap" and return
     elsif not args.all? { |arg| Integer(arg).is_a?(Integer) }
       puts "Wrong argument type, please supply only integers" and return
+    elsif not args.all? { |arg| (1..250).include?(arg.to_i) } 
+      puts "Bitmap size not in range. Please supply a number between 1 and 250" and return
     end
     args = args.map { |arg| arg.to_i }
     @bitmap = Bitmap.new(args.first, args.last)

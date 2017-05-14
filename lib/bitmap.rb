@@ -8,6 +8,10 @@ class Bitmap
     return @pixels
   end
 
+  def set_pixel(colour)
+
+  end
+
   def delete_pixels()
     @pixels.each do |pixel_row|
       pixel_row.map { |pixel| 0 }
