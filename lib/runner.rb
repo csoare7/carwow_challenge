@@ -1,9 +1,9 @@
 require_relative "../lib/bitmap_editor"
 
-module Runner
+class Runner
 
   @@help_txt = 
-  ```
+  "
     There are 8 supported commands:
 
     I M N - Create a new M x N image with all pixels coloured white (O).
@@ -14,24 +14,24 @@ module Runner
     S - Show the contents of the current image
     ? - Displays help text
     X - Terminate the session
-  ```
+  "
 
   def initialise()
     @bitmap_editor = BitmapEditor.new()
   end
 
-  def execute(cmd, args*)
+  def execute(cmd, *args)
     case cmd
     when "I"
-      @bitmap_editor.create_image(args*)
+      @bitmap_editor.create_image(*args)
     when "C"
-      @bitmap_editor.clear_image(args*)
+      @bitmap_editor.clear_image(*args)
     when "L"
-      @bitmap_editor.colour_pixel(args*)
+      @bitmap_editor.colour_pixel(*args)
     when "V"
-      @bitmap_editor.draw_vertical(args*)
+      @bitmap_editor.draw_vertical(*args)
     when "H"
-      @bitmap_editor.draw_horizontal(args*)
+      @bitmap_editor.draw_horizontal(*args)
     when "S"
       @bitmap_editor.show_image()
     when "?"
