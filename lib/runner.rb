@@ -18,6 +18,7 @@ class Runner
 
   def initialize()
     @bitmap_editor = BitmapEditor.new()
+    add_newline()
   end
 
   def execute(input)
@@ -42,6 +43,7 @@ class Runner
     else
       puts "Input not valid command. Type ? for help"
     end
+    add_newline()
   end
 
   def parse_input(input)
@@ -55,5 +57,9 @@ class Runner
 
   def help()
     puts @@help_txt
+  end
+
+  def add_newline()
+    print "> "
   end
 end

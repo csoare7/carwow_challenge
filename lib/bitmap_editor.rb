@@ -3,6 +3,7 @@ require_relative "../lib/bitmap"
 class BitmapEditor
 
   def initialize()
+
   end
 
   def create_image(args)
