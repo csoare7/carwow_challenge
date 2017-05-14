@@ -2,9 +2,7 @@ require_relative "../lib/bitmap"
 
 class BitmapEditor
 
-  @bitmap = nil
-
-  def initialise()
+  def initialize()
     @bitmap = Bitmap.new()
   end
 
