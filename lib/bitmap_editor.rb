@@ -3,28 +3,34 @@ require_relative "../lib/bitmap"
 class BitmapEditor
 
   def initialize()
-
+    @bitmap = Bitmap.new()
   end
 
   def create_image(args)
     if args.length != 2
-      puts "Wrong number of arguments when initializing bitmap" and return
+      puts "Wrong number of arguments" 
+      return
     elsif not args.all? { |arg| Integer(arg).is_a?(Integer) }
-      puts "Wrong argument type, please supply only integers" and return
+      puts "Wrong argument type, please supply only integers" 
+      return
     elsif not args.all? { |arg| (1..250).include?(arg.to_i) } 
-      puts "Bitmap size not in range. Please supply a number between 1 and 250" and return
+      puts "Bitmap size not in range. Please supply a number between 1 and 250"  
+      return
     end
     args = args.map { |arg| arg.to_i }
-    @bitmap = Bitmap.new(args.first, args.last)
+    @bitmap.set_pixels(args.first, args.last)
   end
 
   def colour_pixel(args)
     if args.length != 3
-      puts "Wrong number of arguments when initializing bitmap" and return
+      puts "Wrong number of arguments" 
+      return
     elsif not args.take(2).all? { |arg| Integer(arg).is_a?(Integer) }
-      puts "Wrong argument type, please supply only integers" and return
+      puts "Wrong argument type, please supply only integers"  
+      return
     elsif not ("A".."Z").include?(args.last)
-      puts "Wrong argument type, please supply only capital letters" and return
+      puts "Wrong argument type, please supply only capital letters"  
+      return
     end
     positions = args.take(2).map { |arg| arg.to_i }
     @bitmap.set_pixel(positions, args.last)
@@ -32,11 +38,14 @@ class BitmapEditor
   
   def draw_vertical(args)
     if args.length != 4
-      puts "Wrong number of arguments when initializing bitmap" and return
+      puts "Wrong number of arguments"  
+      return
     elsif not args.take(3).all? { |arg| Integer(arg).is_a?(Integer) }
-      puts "Wrong argument type, please supply only integers" and return
+      puts "Wrong argument type, please supply only integers" 
+      return
     elsif not ("A".."Z").include?(args.last)
-      puts "Wrong argument type, please supply only capital letters" and return
+      puts "Wrong argument type, please supply only capital letters" 
+      return
     end
     indices = args.take(3).map { |arg| arg.to_i }
     column = indices.first
@@ -47,11 +56,14 @@ class BitmapEditor
 
   def draw_horizontal(args)
     if args.length != 4
-      puts "Wrong number of arguments when initializing bitmap" and return
+      puts "Wrong number of arguments"
+      return
     elsif not args.take(3).all? { |arg| Integer(arg).is_a?(Integer) }
-      puts "Wrong argument type, please supply only integers" and return
+      puts "Wrong argument type, please supply only integers" 
+      return
     elsif not ("A".."Z").include?(args.last)
-      puts "Wrong argument type, please supply only capital letters" and return
+      puts "Wrong argument type, please supply only capital letters" 
+      return
     end
     indices = args.take(3).map { |arg| arg.to_i }
     row = indices.first
@@ -65,10 +77,7 @@ class BitmapEditor
   end
 
   def show_image()
-    pixels = @bitmap.get_pixels()
-    pixels.each do |pixel_row|
-      puts pixel_row.each { |pixel| pixel }.join(" ")
-    end
+    @bitmap.print_pixels()
   end
 
 end
