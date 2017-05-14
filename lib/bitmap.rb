@@ -20,4 +20,24 @@ class Bitmap
     end
   end
 
+  def set_vertical_segment(column, ranges, colour)
+    range_start = ranges.first - 1
+    range_end = ranges.last - 1
+    for i in (range_start..range_end)
+      if (@pixels[i][column - 1] rescue false)
+        @pixels[i][column - 1] = colour
+      end
+    end
+  end
+
+  def set_horizontal_segment(row, ranges, colour)
+    range_start = ranges.first - 1
+    range_end = ranges.last - 1
+    for j in (range_start..range_end)
+      if (@pixels[row - 1][j] rescue false)
+        @pixels[row - 1][j] = colour
+      end
+    end
+  end
+
 end
