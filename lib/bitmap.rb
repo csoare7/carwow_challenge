@@ -1,5 +1,4 @@
 class Bitmap
-
   def initialize(m, n)
     @pixels = Array.new(m) { Array.new(n, 0) }
   end
@@ -24,9 +23,7 @@ class Bitmap
     range_start = ranges.first - 1
     range_end = ranges.last - 1
     for i in (range_start..range_end)
-      if (@pixels[i][column - 1] rescue false)
-        @pixels[i][column - 1] = colour
-      end
+      set_pixel([i,column], colour)
     end
   end
 
@@ -34,10 +31,7 @@ class Bitmap
     range_start = ranges.first - 1
     range_end = ranges.last - 1
     for j in (range_start..range_end)
-      if (@pixels[row - 1][j] rescue false)
-        @pixels[row - 1][j] = colour
-      end
+      set_pixel([row,j], colour)
     end
   end
-
 end
