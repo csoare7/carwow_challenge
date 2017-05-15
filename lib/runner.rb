@@ -1,9 +1,9 @@
 require_relative "../lib/bitmap_editor"
 
 class Runner
+  attr_reader :bitmap_editor
 
-  @@help_txt = 
-  "
+  HELP_TEXT = <<~HEREDOC 
     There are 8 supported commands:
 
     I M N - Create a new M x N image with all pixels coloured white (O).
@@ -14,52 +14,52 @@ class Runner
     S - Show the contents of the current image
     ? - Displays help text
     X - Terminate the session
-  "
+    HEREDOC
 
-  def initialize()
-    @bitmap_editor = BitmapEditor.new()
-    add_newline()
+  def initialize
+    @bitmap_editor = BitmapEditor.new
+    add_newline
   end
 
   def execute(input)
     cmd, args = parse_input(input)
     case cmd
     when "I"
-      @bitmap_editor.create_image(args)
+      bitmap_editor.create_image(args)
     when "C"
-      @bitmap_editor.clear_image()
+      bitmap_editor.clear_image
     when "L"
-      @bitmap_editor.colour_pixel(args)
+      bitmap_editor.colour_pixel(args)
     when "V"
-      @bitmap_editor.draw_vertical(args)
+      bitmap_editor.draw_vertical(args)
     when "H"
-      @bitmap_editor.draw_horizontal(args)
+      bitmap_editor.draw_horizontal(args)
     when "S"
-      @bitmap_editor.show_image()
+      bitmap_editor.show_image
     when "?"
-      help()
+      help
     when "X"
-      quit()
+      quit
     else
       puts "Input not valid command. Type ? for help"
     end
-    add_newline()
+    add_newline
   end
 
   def parse_input(input)
     input = input.split(" ")
-    return input.shift(), input
+    return input.shift, input
   end
 
-  def quit()
+  def quit
     exit(0)
   end
 
-  def help()
-    puts @@help_txt
+  def help
+    puts HELP_TEXT
   end
 
-  def add_newline()
+  def add_newline
     print "> "
   end
 end

@@ -1,25 +1,23 @@
 class Bitmap
-  def initialize()
+  attr_accessor :pixels
+
+  def initialize
     @pixels = nil
   end
 
-  def get_pixels()
-    return @pixels
-  end
-
-  def set_pixels(m, n)
-    @pixels = Array.new(m) { Array.new(n, 0) }
+  def init_pixels(m, n)
+    self.pixels = Array.new(m) { Array.new(n, 0) }
   end
 
   def set_pixel(positions, colour)
-    if (@pixels != nil and @pixels[positions.first - 1][positions.last -  1] rescue false)
-      @pixels[positions.first - 1][positions.last -  1] = colour  
+    if pixels != nil and pixels[positions.first - 1][positions.last -  1]
+      pixels[positions.first - 1][positions.last -  1] = colour  
     end
   end
 
-  def delete_pixels()
-    if @pixels != nil
-      @pixels.each do |pixel_row|
+  def delete_pixels
+    if pixels != nil
+      pixels.each do |pixel_row|
         pixel_row.fill(0)
       end
     end
@@ -41,10 +39,10 @@ class Bitmap
     end
   end
 
-  def print_pixels()
-    if @pixels != nil
-      @pixels.each do |pixel_row|
-        puts pixel_row.each { |pixel| pixel }.join(" ")
+  def print_pixels
+    if pixels != nil
+      pixels.each do |pixel_row|
+        puts pixel_row.join(" ")
       end
     end
   end
