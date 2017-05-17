@@ -44,10 +44,42 @@ describe BitmapEditor do
 	end
 
 	describe "#draw_vertical" do
+		it "should reject input if args.length != 4" do
+			expect do 
+				subject.draw_vertical(["3"])
+			end.to output("Wrong number of arguments\n").to_stdout
+		end		
 		
+		it "should reject input if args types are not Integer" do
+			expect do 
+				subject.draw_vertical(["3","A","3","A"])
+			end.to output("Wrong argument type, please supply only integers for coordinates\n").to_stdout
+		end
+
+		it "should reject colour input if not capital letter" do
+			expect do 
+				subject.draw_vertical(["1","3","3","0"])
+			end.to output("Wrong argument type, please supply only capital letters for colour\n").to_stdout
+		end
 	end
 
 	describe "#draw_horizontal" do
+		it "should reject input if args.length != 4" do
+			expect do 
+				subject.draw_horizontal(["3"])
+			end.to output("Wrong number of arguments\n").to_stdout
+		end		
+		
+		it "should reject input if args types are not Integer" do
+			expect do 
+				subject.draw_horizontal(["3","A","3","A"])
+			end.to output("Wrong argument type, please supply only integers for coordinates\n").to_stdout
+		end
 
+		it "should reject colour input if not capital letter" do
+			expect do 
+				subject.draw_horizontal(["1","3","3","0"])
+			end.to output("Wrong argument type, please supply only capital letters for colour\n").to_stdout
+		end
 	end
 end
