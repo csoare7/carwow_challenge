@@ -35,10 +35,11 @@ describe Bitmap do
 
   describe "#set_vertical_segment" do
     it "should set a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive)" do
-      # subject.init_pixels(3,3)
-      # subject.set_vertical_segment(1, [1,3], "A")
-      # puts subject.pixels
-      # expect(subject.pixels[0]).to match_array(["A", "A", "A"])
+      subject.init_pixels(3,3)
+      subject.set_vertical_segment(1, [1,3], "A")
+      expect(subject.pixels[0][0]).to eq("A")
+      expect(subject.pixels[1][0]).to eq("A")
+      expect(subject.pixels[2][0]).to eq("A")
     end
   end
 
@@ -49,5 +50,4 @@ describe Bitmap do
       expect(subject.pixels[0]).to match_array(["A", "A", "A"])
     end
   end
-
 end
