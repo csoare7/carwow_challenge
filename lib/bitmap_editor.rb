@@ -11,7 +11,7 @@ class BitmapEditor
     if args.length != 2
       puts "Wrong number of arguments" 
       return
-    elsif not args.all? { |arg| Integer(arg).is_a?(Integer) }
+    elsif not args.all? { |arg| Integer(arg).is_a?(Integer) rescue false }
       puts "Wrong argument type, please supply only integers" 
       return
     elsif not args.all? { |arg| (1..250).include?(arg.to_i) } 
@@ -26,11 +26,11 @@ class BitmapEditor
     if args.length != 3
       puts "Wrong number of arguments" 
       return
-    elsif not args.take(2).all? { |arg| Integer(arg).is_a?(Integer) }
-      puts "Wrong argument type, please supply only integers"  
+    elsif not args.take(2).all? { |arg| Integer(arg).is_a?(Integer) rescue false }
+      puts "Wrong argument type, please supply only integers for coordinates"  
       return
     elsif not ("A".."Z").include?(args.last)
-      puts "Wrong argument type, please supply only capital letters"  
+      puts "Wrong argument type, please supply only capital letters for colour"  
       return
     end
     positions = args.take(2).map { |arg| arg.to_i }
