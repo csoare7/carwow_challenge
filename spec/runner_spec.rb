@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Runner do
-	let(:bitmap_editor) { BitmapEditor.new }
 
 	describe "#execute" do
 		it "should call bitmap#create_image on command I" do
