@@ -19,6 +19,7 @@
 
 require_relative "../lib/bitmap"
 require_relative "../lib/bitmap_editor"
+require_relative "../lib/runner"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
